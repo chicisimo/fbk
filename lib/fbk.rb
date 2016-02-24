@@ -18,6 +18,13 @@ class FBK
     JSON.parse(response.body, symbolize_names: true)
   end
 
+  def self.get_user_picture(user_id, params)
+    query = parse_params(params)
+
+    response = Nestful.get("#{FACEBOOK_URL}/#{user_id}/picture?#{query}")
+    JSON.parse(response.body, symbolize_names: true)
+  end
+
   private
 
   def self.parse_params(params)
